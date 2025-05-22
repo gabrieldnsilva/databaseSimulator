@@ -99,9 +99,9 @@ A proposta da estrutura de arquivos do projeto é a seguinte:
 
 ## Documentações
 
--   [Casos de Uso](docs/casos_de_uso.md)
--   [Diagrama de Atividades](docs/diagrama_atividades.md)
--   [Diagrama de Módulos](docs/diagrama-modulos.md)
+-   [Casos de Uso](https://github.com/gabrieldnsilva/databaseSimulator/blob/main/docs/casos-de-uso.md)
+-   [Diagrama de Atividades](https://github.com/gabrieldnsilva/databaseSimulator/blob/main/docs/diagrama-atividades.md)
+-   [Diagrama de Módulos](https://github.com/gabrieldnsilva/databaseSimulator/blob/main/docs/diagrama-modulos.md)
 
 ## Referências
 

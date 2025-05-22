@@ -1,80 +1,111 @@
-# Projeto Estrutura de Dados - Simulador de Banco de Dados
+# Simulador de Cadastro de Clientes
 
-# Integrantes:
+## Integrantes
 
 -   Gabriel Danilo do Nascimento e Silva
 -   Kaique
 -   Rogério Rodrigues
 
-# Descrição
+## Descrição do Projeto
 
-Simulador de banco de dados em C, utilizando 3 das estruturas de dados estudadas na disciplina.
+Este projeto implementa um sistema simples de cadastro de clientes utilizando três estruturas de dados fundamentais para simular aspectos básicos de um banco de dados:
 
--   Árvore Binária
--   Listas Dinâmicas
--   Listas Encadeadas
+-   **Lista Dinâmica**: Armazena os dados dos clientes
+-   **Lista Duplamente Ligada**: Permite a ordenação dos dados por nome
+-   **Árvore Binária**: Implementa um índice de acesso rápido pela chave primária (CPF)
 
-# Requisitos
+## Estrutura do Projeto
 
-## Lista Dinâmica:
+### 1. Lista Dinâmica
 
-    A lista dinâmica será utilizada para simular um banco de dados em disco
+Armazena os dados completos dos clientes:
 
-    - CPF
-    - Nome
-    - Endereço
-    - Telefone
-    - Email
+-   CPF
+-   Nome
+-   Endereço
+-   Telefone
+-   Email
 
-## Lista Duplamente Ligada:
+### 2. Lista Duplamente Ligada
 
-    A lista duplamente ligada será utilizada para o índice de ordenação de dados
+Mantém um índice ordenado por nome:
 
-    - Nome
-    - Número de Registro
+-   Nome
+-   Número de Registro
 
-## Árvore Binária:
+### 3. Árvore Binária
 
-    A árvore binária será utilizada como índice de chave primária
+Mantém um índice de acesso rápido pela chave primária:
 
-    - CPF
-    - Número de Registro
+-   CPF
+-   Número de Registro
 
-# Menu
+## Funcionalidades (Menu)
 
-## 1 - Adicionar
+### 1. Adicionar Cliente
 
-Quando a opção **[adicionar**] for selecionada, o programa deverá pedir por CPF;
-Depois **[Buscar]** o CPF, na **Árvore Binária** em condicional:
+-   Solicita o CPF e verifica se já existe na Árvore Binária
+-   Se não existir, solicita os dados completos do cliente
+-   Armazena na Lista Dinâmica, na Árvore Binária e na Lista Duplamente Ligada
 
--   Sim: "CPF já cadastrado"
--   Não: Pedir os dados do cliente, adicionar na **Lista dinâmica** pegando os números de registro, adicionar na **Árvore Binária** e na **Lista duplamente ligada**.
+### 2. Alterar Cliente
 
-## 2 - Alterar
+-   Busca o cliente pelo CPF na Árvore Binária
+-   Permite alterar os dados na Lista Dinâmica
+-   Atualiza a Lista Duplamente Ligada se o nome for alterado
+-   O CPF não pode ser alterado (chave primária)
 
-Quando a opção **[alterar]** for selecionada, pedir o CPF do cliente e **[Buscar]** na **Árvore Binária** para condicional:
+### 3. Excluir Cliente
 
--   Sim: Pedir os outros dados do cliente e alterar a **Lista dinâmica**, se o [Nome] for alterado, excluir da **Lista duplamente ligada** o anterior e adicionar o novo nome.
--   Não: "CPF não cadastrado"
+-   Busca o cliente pelo CPF na Árvore Binária
+-   Remove o cliente da Árvore Binária e da Lista Duplamente Ligada
 
-Obs: O CPF não pode ser alterado por ser a chave primária.
+### 4. Procurar Cliente
 
-## 3 - Excluir
+-   Busca o cliente pelo CPF na Árvore Binária
+-   Exibe todos os dados do cliente armazenados na Lista Dinâmica
 
-Quando a opção **[excluir]** for selecionada, pedir o CPF do cliente e **[Buscar]** na **Árvore Binária** para condicional:
+### 5. Relatório
 
--   Sim: Excluir o cliente da **Lista dinâmica** e da **Árvore Binária**. Não será necessário excluir da **Lista dinâmica** pois os dados agora estarão inacessíveis.
--   Não: "CPF não cadastrado"
+-   Utiliza a Lista Duplamente Ligada para imprimir todos os registros ordenados por nome
 
-## 4 - Procurar
+### 6. Sair
 
-Quando a opção **[procurar]** for selecionada, pedir o CPF do cliente e **[Buscar]** na **Árvore Binária** para condicional:
+-   Encerra a execução do programa
 
--   Sim: Exibir os dados do cliente contidos na **Lista dinâmica**.
--   Não: "CPF não cadastrado"
+## Estrutura de Arquivos
 
-## 5 - Relatório
+A proposta da estrutura de arquivos do projeto é a seguinte:
 
-Quando a opção **[relatório]** for selecionada, usar a **Lista duplamente ligada** para imprimir todos os registros ordenados por nome.
+```
+/databaseSimulator
+|-- src
+|   |-- main.c
+|   |-- dynamicList.c
+|   |-- doubly_linkedList.c
+|   |-- binaryTree.c
+|   `-- aux.c
+|-- include
+|   |-- dynamicList.h
+|   |-- doubly_linkedList.h
+|   |-- binaryTree.h
+|   `-- aux.h
+|-- docs
+|   |-- casos_de_uso.md
+|   |-- diagrama_atividades.md
+|   `-- diagrama_classes.md
+`-- Makefile
+```
 
-## 6 - Sair
+## Documentações
+
+-   [Casos de Uso](docs/casos_de_uso.md)
+-   [Diagrama de Atividades](docs/diagrama_atividades.md)
+-   [Diagrama de Módulos](docs/diagrama-modulos.md)
+
+## Referências
+
+-   Aulas do professor Nava
+-   Estruturas de Dados e Algoritmos em C - Mark Allen Weiss
+-   [Documentação do SQLite](https://github.com/sqlite/sqlite)
+-   [Implementação de stupidDatabase em JavaScript - AkitaOnRails](https://github.com/akitaonrails/akitando_episode_0118)

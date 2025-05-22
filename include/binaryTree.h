@@ -6,12 +6,12 @@
 /**
  * @brief Estrutura que representa um nó da árvore binária.
  * 
- * Cada nó contém um nome, um número de registro e ponteiros para os filhos à direita e à esquerda.
+ * Cada nó contém um cpf, um número de registro e ponteiros para os filhos à direita e à esquerda.
 */
 
 
 struct noAB {
-    char nome[101];
+    char cpf[12];
     int registro; //n° Registro
     struct noAB *direita;
     struct noAB *esquerda;
@@ -35,14 +35,14 @@ extern struct noAB *ABanterior;
 /**
  * @brief Cria um novo nó na árvore binária.
  * 
- * Essa função aloca e inicializa um novo nó com o nome e número de registro fornecidos.
+ * Essa função aloca e inicializa um novo nó com o cpf e número de registro fornecidos.
  * 
- * @param nome O nome a ser associado ao nó.
+ * @param cpf O cpf a ser associado ao nó.
  * @param registro O número de registro a ser associado ao nó.
  * 
  * @return Retorna um ponteiro para o novo nó criado.
 */
-struct noAB *ABnovoNo(char *nome, int registro);
+struct noAB *ABnovoNo(char *cpf, int registro);
 
 /**
  * @brief Inicializa a árvore binária.
@@ -71,24 +71,24 @@ void ABfinalizar(struct noAB *elemento);
 void ABadicionar(struct noAB *aonde, struct noAB *novo);
 
 /**
- * @brief Localiza um nó na árvore binária pelo nome.
+ * @brief Localiza um nó na árvore binária pelo cpf.
  * 
  * Essa função busca um nó na árvore a partir da raiz (ou de um nó específico) e retorna o nó encontrado, caso exista.
  * 
  * @param aonde O nó onde a busca deve começar (pode ser a raiz ou qualquer outro nó).
- * @param nome O nome do nó a ser encontrado.
+ * @param cpf O cpf do nó a ser encontrado.
  * 
- * @return Retorna o nó correspondente ao nome, ou NULL caso o nó não seja encontrado.
+ * @return Retorna o nó correspondente ao cpf, ou NULL caso o nó não seja encontrado.
 */
-struct noAB *ABlocalizar(struct noAB *aonde, char *nome);
+struct noAB *ABlocalizar(struct noAB *aonde, char *cpf);
 
 /**
  * @brief Exclui um nó da árvore binária.
  * 
  * Essa função remove um nó da árvore binária, desalocando sua memória e ajustando os ponteiros dos pais e filhos.
  * 
- * @param nome O nome do nó a ser excluído.
+ * @param cpf O cpf do nó a ser excluído.
 */
-void ABexcluir(char *nome);
+void ABexcluir(char *cpf);
 
 #endif //BINARYTREE_H

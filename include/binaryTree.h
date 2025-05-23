@@ -91,4 +91,11 @@ struct noAB *ABlocalizar(struct noAB *aonde, char *cpf);
 */
 void ABexcluir(char *cpf);
 
+/**
+ * @brief Interface de busca de CPF na árvore binária.
+ *
+ * @param cpf CPF a ser procurado.
+ */
+void ABprocurar(char *cpf);
+
 #endif //BINARYTREE_H

@@ -165,6 +165,26 @@ struct noAB *ABlocalizar(struct noAB *aonde, char *cpf)
 }
 
 /**
+ * @brief Procura um CPF na árvore binária e exibe o resultado ao usuário.
+ *
+ * Esta função utiliza a função ABlocalizar() para buscar um CPF na árvore binária.
+ * Se o CPF for encontrado, exibe o número de registro associado. Caso contrário,
+ * informa que o CPF não está cadastrado.
+ *
+ * @param cpf CPF a ser procurado na árvore (string com até 11 caracteres + '\0').
+ */
+void ABprocurar(char *cpf)
+{
+    struct noAB *resultado = ABlocalizar(ABinicio, cpf);
+
+    if (resultado == NULL) {
+        printf("CPF não cadastrado.\n");
+    } else {
+        printf("CPF encontrado: %s | Registro: %d\n", resultado->cpf, resultado->registro);
+    }
+}
+
+/**
  * @brief Exclui um nó da árvore binária com base no CPF.
  *
  * Remove o nó correspondente ao CPF e reinserir seus filhos na árvore.

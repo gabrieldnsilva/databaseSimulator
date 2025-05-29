@@ -90,7 +90,7 @@ void ABadicionar(struct noAB *aonde, struct noAB *novo)
     {
         if (strcmp(novo->cpf, aonde->cpf) > 0)
         {
-            // ABadicionar a direita
+            // ABadicionar à direita
             if (aonde->direita == NULL)
             {
                 aonde->direita = novo;
@@ -102,7 +102,7 @@ void ABadicionar(struct noAB *aonde, struct noAB *novo)
         }
         else
         {
-            // ABadicionar a esquerda
+            // ABadicionar à esquerda
             if (aonde->esquerda == NULL)
             {
                 aonde->esquerda = novo;

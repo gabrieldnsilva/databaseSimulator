@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include "../include/dynamicList.h"
 #include "../include/binaryTree.h"
 #include "../include/listaLigada.h"
@@ -264,7 +265,7 @@ void gerarRelatorio()
     printf("Clientes ordenados por nome:\n\n");
 
     // Percorrer a lista duplamente ligada (já ordenada por nome)
-    struct noLL *atual = LLprimeiro();
+    struct LLno *atual = LLobterPrimeiro();
     int contador = 1;
 
     while (atual != NULL)

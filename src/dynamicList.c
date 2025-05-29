@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "dynamicList.h"
+#include "../include/dynamicList.h"
 
 // Define uma capacidade inicial para a lista.
 #define INITIAL_CAPACITY 5

@@ -62,6 +62,8 @@ bool validarCPF(const char *cpf)
  */
 void lerDadosCliente(Cliente *cliente, const char *cpf)
 {
+    limparBuffer();
+
     if (cpf != NULL)
     {
         strcpy(cliente->cpf, cpf);

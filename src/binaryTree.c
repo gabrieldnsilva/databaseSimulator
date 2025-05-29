@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "binaryTree.h"
+#include "../include/binaryTree.h"
 
 /**
  * @brief Ponteiro para o nó raiz da árvore binária.
@@ -31,14 +31,14 @@ void ABinicializar()
  */
 void ABfinalizar(struct noAB *elemento)
 {
-    if(ABinicio != NULL)
+    if (ABinicio != NULL)
     {
         printf("Excluindo %s\n", elemento->cpf);
-        if(elemento->esquerda != NULL)
+        if (elemento->esquerda != NULL)
         {
             ABfinalizar(elemento->esquerda);
         }
-        if(elemento->direita != NULL)
+        if (elemento->direita != NULL)
         {
             ABfinalizar(elemento->direita);
         }
@@ -58,7 +58,7 @@ struct noAB *ABnovoNo(char *cpf, int registro)
     struct noAB *p;
 
     p = malloc(sizeof(struct noAB));
-    if(!p)
+    if (!p)
     {
         printf("Erro de alocação de memória !!!\n");
         exit(-1);
@@ -82,16 +82,16 @@ struct noAB *ABnovoNo(char *cpf, int registro)
  */
 void ABadicionar(struct noAB *aonde, struct noAB *novo)
 {
-    if(ABinicio == NULL)
+    if (ABinicio == NULL)
     {
         ABinicio = novo;
     }
     else
     {
-        if(strcmp(novo->cpf, aonde->cpf) > 0)
+        if (strcmp(novo->cpf, aonde->cpf) > 0)
         {
             // ABadicionar a direita
-            if(aonde->direita == NULL)
+            if (aonde->direita == NULL)
             {
                 aonde->direita = novo;
             }
@@ -103,7 +103,7 @@ void ABadicionar(struct noAB *aonde, struct noAB *novo)
         else
         {
             // ABadicionar a esquerda
-            if(aonde->esquerda == NULL)
+            if (aonde->esquerda == NULL)
             {
                 aonde->esquerda = novo;
             }
@@ -126,21 +126,21 @@ void ABadicionar(struct noAB *aonde, struct noAB *novo)
  */
 struct noAB *ABlocalizar(struct noAB *aonde, char *cpf)
 {
-    if(ABinicio == NULL)
+    if (ABinicio == NULL)
     {
         return NULL;
     }
-    if(!strcmp(aonde->cpf, cpf))
+    if (!strcmp(aonde->cpf, cpf))
     {
         return aonde;
     }
     else
     {
         ABanterior = aonde;
-        if(strcmp(cpf, aonde->cpf) > 0)
+        if (strcmp(cpf, aonde->cpf) > 0)
         {
             // ABlocalizar à direita
-            if(aonde->direita == NULL)
+            if (aonde->direita == NULL)
             {
                 return NULL;
             }
@@ -152,7 +152,7 @@ struct noAB *ABlocalizar(struct noAB *aonde, char *cpf)
         else
         {
             // ABlocalizar à esquerda
-            if(aonde->esquerda == NULL)
+            if (aonde->esquerda == NULL)
             {
                 return NULL;
             }
@@ -177,9 +177,12 @@ void ABprocurar(char *cpf)
 {
     struct noAB *resultado = ABlocalizar(ABinicio, cpf);
 
-    if (resultado == NULL) {
+    if (resultado == NULL)
+    {
         printf("CPF não cadastrado.\n");
-    } else {
+    }
+    else
+    {
         printf("CPF encontrado: %s | Registro: %d\n", resultado->cpf, resultado->registro);
     }
 }
@@ -193,7 +196,7 @@ void ABprocurar(char *cpf)
  */
 void ABexcluir(char *cpf)
 {
-    if(ABinicio == NULL)
+    if (ABinicio == NULL)
     {
         printf("Vazio.\n");
         return;
@@ -201,7 +204,7 @@ void ABexcluir(char *cpf)
 
     struct noAB *aux = ABlocalizar(ABinicio, cpf);
 
-    if(aux == NULL)
+    if (aux == NULL)
     {
         printf("CPF não cadastrado.\n");
         return;
@@ -210,7 +213,7 @@ void ABexcluir(char *cpf)
     printf("Localizado %s\n", aux->cpf);
 
     // Remove a referência ao nó excluído da árvore
-    if(aux == ABinicio)
+    if (aux == ABinicio)
     {
         ABinicio = NULL;
     }
@@ -227,11 +230,11 @@ void ABexcluir(char *cpf)
     }
 
     // Reinsere os filhos do nó excluído
-    if(aux->esquerda != NULL)
+    if (aux->esquerda != NULL)
     {
         ABadicionar(ABinicio, aux->esquerda);
     }
-    if(aux->direita != NULL)
+    if (aux->direita != NULL)
     {
         ABadicionar(ABinicio, aux->direita);
     }

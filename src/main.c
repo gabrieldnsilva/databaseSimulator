@@ -99,9 +99,6 @@ void exibirMenu()
     printf("Escolha uma opção: ");
 }
 
-/**
- * Adiciona um novo cliente ao sistema.
- */
 void adicionarCliente()
 {
     char cpf[12];
@@ -109,13 +106,14 @@ void adicionarCliente()
     printf("\n=== ADICIONAR CLIENTE ===\n");
     lerCPF(cpf);
 
-    // Verificar se o CPF já existe
-    struct noAB *resultado = ABlocalizar(ABinicio, cpf);
-
-    if (resultado != NULL)
+    if (ABinicio != NULL)
     {
-        printf("CPF já cadastrado!\n");
-        return;
+        struct noAB *resultado = ABlocalizar(ABinicio, cpf);
+        if (resultado != NULL)
+        {
+            printf("CPF já cadastrado!\n");
+            return;
+        }
     }
 
     // Ler dados do cliente
@@ -142,9 +140,6 @@ void adicionarCliente()
     printf("Cliente cadastrado com sucesso!\n");
 }
 
-/**
- * Altera os dados de um cliente existente.
- */
 void alterarCliente()
 {
     char cpf[12];
@@ -193,9 +188,6 @@ void alterarCliente()
     }
 }
 
-/**
- * Exclui um cliente do sistema.
- */
 void excluirCliente()
 {
     char cpf[12];
@@ -225,9 +217,6 @@ void excluirCliente()
     printf("Nota: Os dados permanecem na lista dinâmica mas ficam inacessíveis.\n");
 }
 
-/**
- * Procura e exibe os dados de um cliente.
- */
 void procurarCliente()
 {
     char cpf[12];
@@ -249,9 +238,6 @@ void procurarCliente()
     exibirCliente(&cliente);
 }
 
-/**
- * Gera um relatório com todos os clientes ordenados por nome.
- */
 void gerarRelatorio()
 {
     printf("\n=== RELATÓRIO DE CLIENTES ===\n");
@@ -265,8 +251,15 @@ void gerarRelatorio()
     printf("Clientes ordenados por nome:\n\n");
 
     // Percorrer a lista duplamente ligada (já ordenada por nome)
+    LLprimeiro(); // Inicia a iteração no primeiro nó
     struct LLno *atual = LLregistroAtual();
     int contador = 1;
+
+    if (atual == NULL)
+    {
+        printf("Erro: Não foi possível acessar o primeiro registro.\n");
+        return;
+    }
 
     while (atual != NULL)
     {
@@ -288,5 +281,5 @@ void gerarRelatorio()
         contador++;
     }
 
-    printf("Total de clientes: %d\n", contador - 1);
+    printf("Total de clientes: %d\n", contador);
 }

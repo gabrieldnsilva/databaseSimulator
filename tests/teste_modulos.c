@@ -11,7 +11,7 @@ int main()
     printf("1. Testando Lista Dinâmica...\n");
 
     DynamicList lista;
-    inicializarLista(&lista);
+    LDinicializarLista(&lista);
 
     // Criar clientes de teste
     Cliente c1 = {"12345678901", "João Silva", "Rua A, 123", "1234-5678", "joao@email.com"};
@@ -19,9 +19,9 @@ int main()
     Cliente c3 = {"11122233344", "Pedro Oliveira", "Rua C, 789", "9999-8888", "pedro@email.com"};
 
     // Teste de adição
-    int reg1 = adicionarCliente(&lista, c1);
-    int reg2 = adicionarCliente(&lista, c2);
-    int reg3 = adicionarCliente(&lista, c3);
+    int reg1 = LDadicionarCliente(&lista, c1);
+    int reg2 = LDadicionarCliente(&lista, c2);
+    int reg3 = LDadicionarCliente(&lista, c3);
 
     printf("Registros adicionados: %d, %d, %d\n", reg1, reg2, reg3);
 
@@ -31,11 +31,11 @@ int main()
 
     // Teste de atualização
     strcpy(cliente.telefone, "9999-9999");
-    bool sucesso = atualizarCliente(&lista, reg1, cliente);
+    bool sucesso = LDatualizarCliente(&lista, reg1, cliente);
     printf("Atualização: %s\n", sucesso ? "Sucesso" : "Falha");
 
     // Verificar cliente atualizado
-    Cliente cliente = LDobterCliente(&lista, reg1);
+    cliente = LDobterCliente(&lista, reg1);
     printf("Telefone atualizado: %s\n", cliente.telefone);
 
     // Teste de validação de CPF
@@ -45,7 +45,7 @@ int main()
     printf("CPF '1234567890a' válido: %s\n", validarCPF("1234567890a") ? "Sim" : "Não");
 
     // Liberar memória
-    finalizarLista(&lista);
+    LDfinalizarLista(&lista);
 
     printf("\n=== TESTES CONCLUÍDOS ===\n");
 

@@ -181,7 +181,7 @@ void alterarCliente()
         // Se o nome foi alterado, atualizar na lista duplamente ligada
         if (nomeAlterado)
         {
-            LLremover(clienteAtual.nome);
+            LLexcluir(clienteAtual.nome);
             LLadicionar(novosDados.nome, resultado->registro);
         }
 
@@ -216,10 +216,10 @@ void excluirCliente()
     Cliente cliente = LDobterCliente(&listaDinamica, resultado->registro);
 
     // Remover da árvore binária
-    ABremover(ABinicio, cpf);
+    ABexcluir(cpf);
 
     // Remover da lista duplamente ligada
-    LLremover(cliente.nome);
+    LLexcluir(cliente.nome);
 
     printf("Cliente excluído com sucesso!\n");
     printf("Nota: Os dados permanecem na lista dinâmica mas ficam inacessíveis.\n");
@@ -256,7 +256,7 @@ void gerarRelatorio()
 {
     printf("\n=== RELATÓRIO DE CLIENTES ===\n");
 
-    if (LLvazia())
+    if (LLregInicio == NULL)
     {
         printf("Nenhum cliente cadastrado.\n");
         return;
@@ -265,7 +265,7 @@ void gerarRelatorio()
     printf("Clientes ordenados por nome:\n\n");
 
     // Percorrer a lista duplamente ligada (já ordenada por nome)
-    struct LLno *atual = LLobterPrimeiro();
+    struct LLno *atual = LLregistroAtual();
     int contador = 1;
 
     while (atual != NULL)
@@ -280,7 +280,11 @@ void gerarRelatorio()
         printf("Email: %s\n", cliente.email);
         printf("================\n\n");
 
-        atual = LLproximo(atual);
+        if (!LLproximo())
+        {
+            break;
+        }
+        atual = LLregistroAtual();
         contador++;
     }
 
